@@ -7,7 +7,7 @@ This project demonstrates an **Access Audit** as part of **Microsoft Entra ID Go
 
 ## 🧑‍💻 Key Highlights:
 - **User Access Export**: CSV file containing user details from **Entra ID**.
-- **Audit Analysis**: Identified user types (Members, Guests), object types, and user categories.
+- **Audit Analysis**: Identified user types , object types, and user categories.
 - **Governance Actions**: Recommendations for **Access Reviews** and **Lifecycle Management**.
 
 ---
@@ -23,8 +23,8 @@ This project demonstrates an **Access Audit** as part of **Microsoft Entra ID Go
 ---
 
 ## ⚙️ Audit Insights:
-- **Member Users**: Internal users with regular access (e.g., employees).
-- **Guest Users**: External users (e.g., vendors, partners) – flagged for review.
+- **Member Users**: Internal users with regular access.
+- **Guest Users**: External users – flagged for review.
 - **Group Objects**: Distribution groups and security groups.
 - **Orphaned/Inactive Accounts**: Future enhancement to detect disabled or inactive users.
 

@@ -12,7 +12,7 @@ This project demonstrates an **Access Audit** as part of **Microsoft Entra ID Go
 
 ---
 
-## 📊 Sample Data (Extract):
+## 📊 Data (Extract):
 | id                                    | userPrincipalName                             | displayName | objectType | userType | isUser | isGroup | isGuest |
 |----------------------------------------|-------------------------------------------------|------------|------------|----------|--------|---------|---------|
 | 445d4737-6081-4e91-870e-e7c7e7cd80e0  | thehayesmen_gmail.com#EXT#@thehayesmengmail.onmicrosoft.com | Jerry Minta | user       | Member   | True   | False   | False   |

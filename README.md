@@ -65,21 +65,3 @@ This project demonstrates importing users into Azure Active Directory (Azure AD)
 4. Run the script:
    ```powershell
    ./import_users.ps1
-   ```
-
-## Expected Output
-- Users will be created in Azure AD.
-- Assigned initial passwords.
-- Accounts will be enabled based on the `BlockSignIn` column.
-
-## Notes
-- Change passwords as per organization policy.
-- Use Conditional Access policies to enforce MFA after user creation.
-```
-
-## Final Steps
-1. Upload these files to your GitHub repository.
-2. Add screenshots from Azure AD portal showing users and roles.
-3. Provide a link to the repo on your LinkedIn profile or resume.
-
-Good luck with your portfolio!

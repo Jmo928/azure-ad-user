@@ -1,7 +1,7 @@
 # Microsoft Entra ID Governance – User Access Audit
 
 ## 📄 Overview
-This project demonstrates an **Access Audit** as part of **Microsoft Entra ID Governance**. Using user data exported from **Microsoft Entra ID (formerly Azure AD)**, we analyze the access patterns, identify guest users, and ensure compliance with **identity governance best practices**.
+This project demonstrates an **Access Audit** as part of **Microsoft Entra ID Governance**. Using user data exported from **Microsoft Entra ID **, we analyze the access patterns, identify guest users, and ensure compliance with **identity governance best practices**.
 
 ---
 

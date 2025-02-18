@@ -31,7 +31,7 @@ This project demonstrates an **Access Audit** as part of **Microsoft Entra ID Go
 ---
 
 ## 🛠️ Analysis with Python:
-### Sample `analyze_access_audit.py`:
+### Analyze_access_audit.py`:
 ```python
 import pandas as pd
 

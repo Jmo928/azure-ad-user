@@ -1,67 +1,47 @@
-# azure-ad-user
-Azure AD User Import Automation using PowerShell &amp; CSV
-# Azure AD User Import and Automation
+# Microsoft Entra ID Governance – User Access Audit
 
-## Project Overview
-This project demonstrates how to import users into Azure Active Directory (Azure AD) from a CSV file and automate user creation and role assignment using PowerShell.
+## 📄 Overview
+This project demonstrates an **Access Audit** as part of **Microsoft Entra ID Governance**. Using user data exported from **Microsoft Entra ID (formerly Azure AD)**, we analyze the access patterns, identify guest users, and ensure compliance with **identity governance best practices**.
 
-### Project Structure
-- `import_users.ps1`: PowerShell script to create users in Azure AD.
-- `users_template.csv`: Sample CSV template for bulk user import.
-- `README.md`: Documentation for the project.
+---
 
-## import_users.ps1
-```powershell
-# Install AzureAD module if not already installed
-# Install-Module -Name AzureAD
+## 🧑‍💻 Key Highlights:
+- **User Access Export**: CSV file containing user details from **Entra ID**.
+- **Audit Analysis**: Identified user types (Members, Guests), object types, and user categories.
+- **Governance Actions**: Recommendations for **Access Reviews** and **Lifecycle Management**.
 
-# Connect to Azure AD
-Connect-AzureAD
+---
 
-# Import CSV file containing user data
-$users = Import-Csv -Path "./users_template.csv"
+## 📊 Sample Data (Extract):
+| id                                    | userPrincipalName                             | displayName | objectType | userType | isUser | isGroup | isGuest |
+|----------------------------------------|-------------------------------------------------|------------|------------|----------|--------|---------|---------|
+| 445d4737-6081-4e91-870e-e7c7e7cd80e0  | thehayesmen_gmail.com#EXT#@thehayesmengmail.onmicrosoft.com | Jerry Minta | user       | Member   | True   | False   | False   |
+| 1c94d0ac-3c75-4c9b-b76e-bca9d57bd349  | John@thehayesmengmail.onmicrosoft.com          | Saint John | user       | Member   | True   | False   | False   |
 
-foreach ($user in $users) {
-    $passwordProfile = New-Object -TypeName Microsoft.Open.AzureAD.Model.PasswordProfile
-    $passwordProfile.Password = $user.InitialPassword
+*(Data anonymized for display purposes)*
 
-    New-AzureADUser -UserPrincipalName $user.UserPrincipalName `
-                    -DisplayName $user.DisplayName `
-                    -MailNickName $user.DisplayName.Replace(" ", "") `
-                    -PasswordProfile $passwordProfile `
-                    -AccountEnabled ([System.Convert]::ToBoolean($user.BlockSignIn) -eq $false)
-}
-```
+---
 
-## users_template.csv
-```
-UserPrincipalName,DisplayName,InitialPassword,BlockSignIn
-exampleuser@domain.onmicrosoft.com,Example User,Password123!,False
-anotheruser@domain.onmicrosoft.com,Another User,Password456!,False
-```
+## ⚙️ Audit Insights:
+- **Member Users**: Internal users with regular access (e.g., employees).
+- **Guest Users**: External users (e.g., vendors, partners) – flagged for review.
+- **Group Objects**: Distribution groups and security groups.
+- **Orphaned/Inactive Accounts**: Future enhancement to detect disabled or inactive users.
 
-## README.md
-```
-# Azure AD User Import and Automation
+---
 
-## Overview
-This project demonstrates importing users into Azure Active Directory (Azure AD) using PowerShell and a CSV file. It also covers automating user creation and assigning initial passwords.
+## 🛠️ Analysis with Python:
+### Sample `analyze_access_audit.py`:
+```python
+import pandas as pd
 
-## Prerequisites
-- Azure AD module for PowerShell
-- Azure AD Admin Access
-- PowerShell environment
+# Load CSV data
+data = pd.read_csv('entra_id_access_audit.csv')
 
-## How to Run
-1. Install Azure AD module if not already done:
-   ```powershell
-   Install-Module -Name AzureAD
-   ```
-2. Connect to Azure AD:
-   ```powershell
-   Connect-AzureAD
-   ```
-3. Update `users_template.csv` with user data.
-4. Run the script:
-   ```powershell
-   ./import_users.ps1
+# Filter Guest Users
+guest_users = data[data['userType'] == 'Guest']
+
+# Display Guest Users
+print("Guest Users:")
+print(guest_users[['displayName', 'userPrincipalName']])
+
